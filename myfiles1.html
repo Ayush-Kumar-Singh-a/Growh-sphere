@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Improvement Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            background-color: #34495E;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #1ABC9C;
+            color: white;
+        }
+
+        .hero {
+            background: url('https://via.placeholder.com/1920x500') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); 
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: center;
+            gap: 20px; 
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            flex: 1 1 calc(33% - 40px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card h2 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            margin: 10px 0;
+        }
+
+        .card ul li a {
+            text-decoration: none;
+            color: #1ABC9C;
+            transition: color 0.3s;
+        }
+
+        .card ul li a:hover {
+            text-decoration: underline;
+            color: #148f77;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                flex: 1 1 calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Improvement Hub</h1>
+        <p>Your go-to place for improving technical skills, exam preparation, and more!</p>
+    </header>
+
+    <nav>
+        <a href="#technical-skills">Technical Skills</a>
+        <a href="#exam-preparation">Exam Preparation</a>
+        <a href="#body-language">Body Language</a>
+        <a href="#ai-features">AI Features</a>
+        <a href="#other-areas">Other Study Areas</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to Your Learning Journey</h1>
+    </div>
+
+    <div class="container">
+        <div id="technical-skills" class="card">
+            <h2>Technical Skills</h2>
+            <p>Resources and tutorials to improve your programming, software development, and other technical skills.</p>
+            <ul>
+                <li><a href="#">Programming Tutorials</a></li>
+                <li><a href="#">Software Development Practices</a></li>
+                <li><a href="#">Project Ideas</a></li>
+            </ul>
+        </div>
+
+        <div id="exam-preparation" class="card">
+            <h2>Exam Preparation</h2>
+            <p>Tips and materials to help you prepare effectively for your exams.</p>
+            <ul>
+                <li><a href="#">Study Guides</a></li>
+                <li><a href="#">Past Exam Papers</a></li>
+                <li><a href="#">Time Management Tips</a></li>
+            </ul>
+        </div>
+
+        <div id="body-language" class="card">
+            <h2>Body Language Communication Skills</h2>
+            <p>Improve your body language and communication skills with our resources.</p>
+            <ul>
+                <li><a href="#">Body Language Tips</a></li>
+                <li><a href="#">Effective Communication Techniques</a></li>
+                <li><a href="#">Public Speaking Guides</a></li>
+            </ul>
+        </div>
+
+        <div id="ai-features" class="card">
+            <h2>AI Features</h2>
+            <p>Leverage AI to enhance your learning experience. Try our handwritten text to digital text converter!</p>
+            <ul>
+                <li><a href="#">Handwritten Text to Digital Text Converter</a></li>
+                <li><a href="#">AI-Based Study Recommendations</a></li>
+                <li><a href="#">Personalized Learning Paths</a></li>
+            </ul>
+        </div>
+
+        <div id="other-areas" class="card">
+            <h2>Other Study Areas</h2>
+            <p>Explore other areas to enhance your overall academic performance.</p>
+            <ul>
+                <li><a href="#">Research Techniques</a></li>
+                <li><a href="#">Critical Thinking Exercises</a></li>
+                <li><a href="#">Stress Management Tips</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Student Improvement Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

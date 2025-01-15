@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Sphere</title>
+
+    <style>
+      :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #50c878;
+        --background-color: #ffffff;
+        --text-color: #333333;
+        --card-background: #f0f0f0;
+        --header-background: #2c3e50;
+        --nav-background: #34495e;
+      }
+
+      .dark-mode {
+        --primary-color: #61dafb;
+        --secondary-color: #66ff99;
+        --background-color: #1a1a1a;
+        --text-color: #f0f0f0;
+        --card-background: #2c2c2c;
+        --header-background: #0d1117;
+        --nav-background: #161b22;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      header {
+        background-color: var(--header-background);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5em;
+      }
+
+      header p {
+        margin: 10px 0 0;
+        font-size: 1.2em;
+      }
+
+      nav {
+        background-color: var(--nav-background);
+        background-image: url('path/to/your/nav-background.jpg'); /* Optional */
+        background-size: cover; /* Optional */
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      nav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        font-size: 1.1em;
+      }
+
+      nav a:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .hero {
+        background: url('https://img.freepik.com/free-vector/programmer-working-desk_23-2148288752.jpg?w=1380&t=st=1727332538~exp=1727333138~hmac=2f97d37fadf6146c0b61d6810e498fa1dfa26bf19bbc9a2e9e4006d2f1f45c89') no-repeat center center/cover; 
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 2px 2px 4px #000000;
+        margin-bottom: 20px;
+        border-bottom: 5px solid #1ABC9C;
+    }
+
+      
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .card {
+        background-color: var(--card-background);
+        padding: 20px;
+        flex: 1 1 calc(30% - 40px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+      }
+
+      .card h2 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.8em;
+      }
+
+      .card p {
+        font-size: 1em;
+        margin-bottom: 10px;
+      }
+
+      .card ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .card ul li {
+        margin: 10px 0;
+      }
+
+      .card ul li a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        transition: color 0.3s;
+      }
+
+      .card ul li a:hover {
+        text-decoration: underline;
+        color: var(--primary-color);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-header h2 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.8em;
+      }
+      
+      .card-content {
+        display: none;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        max-height: 0;
+      }
+
+      .card-content.active {
+        display: block;
+        max-height: 1000px;
+        transition: max-height 0.5s ease-in;
+      }
+
+      footer {
+        background-color: var(--header-background);
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+
+      .card-header h2 {
+        margin: 0;
+        font-size: 1.5em;
+        color: var(--primary-color);
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        cursor: pointer;
+        border: none;
+      }
+
+      .cta-button:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .search-container input[type="text"] {
+        padding: 10px;
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1em;
+      }
+
+      .search-container button {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .search-container button:hover {
+        background-color: var(--secondary-color);
+      }
+
+      
+      
+    
+      .testimonials, .events, .newsletter {
+        background-color: var(--card-background);
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .testimonials h2, .events h2, .newsletter h2 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 2em;
+      }
+
+      .testimonials blockquote, .events ul, .newsletter form {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .testimonials blockquote {
+        margin-bottom: 20px;
+        padding: 10px;
+        border-left: 4px solid var(--secondary-color);
+        background-color: rgba(255, 255, 255, 0.1);
+        font-style: italic;
+      }
+
+      .events ul li {
+        margin-bottom: 10px;
+        border-bottom: 1px solid var(--text-color);
+        padding-bottom: 10px;
+      }
+
+      .events ul li:last-child {
+        border-bottom: none;
+      }
+
+      .newsletter form {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 90px;
+      }
+
+      .newsletter input[type="email"] {
+        padding: 10px;
+        border: 1px solid var(--text-color);
+        border-radius: 4px;
+        font-size: 1em;
+        margin-bottom: 10px;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+
+      .newsletter button {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .newsletter button:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .testimonial-carousel {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
+      }
+
+      .testimonial-carousel div {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+      }
+
+      .testimonial-carousel blockquote {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+      }
+      
+      .dark-mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .dark-mode-toggle:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .carousel-button {
+        position: absolute;
+        top: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 1.5em;
+        transition: background-color 0.3s;
+      }
+
+      .carousel-button.prev {
+        left: 10px;
+      }
+
+      .carousel-button.next {
+        right: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .card {
+          flex: 1 1 calc(50% - 40px);
+        }
+
+        .search-container input[type="text"] {
+          width: 200px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          flex: 1 1 calc(100% - 40px);
+        }
+
+        .search-container input[type="text"] {
+          width: 100%;
+        }
+      }
+      .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.7);
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    @keyframes bubble-animation {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 0.7;
+        }
+        100% {
+            transform: translateY(-100px) scale(1.5);
+            opacity: 0;
+        }
+    }
+    
+    </style>
+    
+</head>
+<body>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <header>
+        <h1>Growth Sphere</h1>
+        <p>Your interactive hub for personal and professional development!</p>
+    </header>
+
+    <nav>
+        <a href="#technical-skills">Technical Skills</a>
+        <a href="#exam-preparation">Exam Preparation</a>
+        <a href="#body-language">Body Language</a>
+        <a href="#ai-features">AI Features</a>
+        <a href="#other-areas">Other Study Areas</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#events">Events</a>
+        <a href="#newsletter">Newsletter</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to Your Learning Journey</h1>
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchBar" placeholder="Search or jump to...">
+      <button onclick="searchFunction()">Search</button>
+  </div>
+  
+  <script>
+      function searchFunction() {
+          let searchTerm = document.getElementById('searchBar').value.toLowerCase();
+          let cards = document.querySelectorAll('.card');
+          cards.forEach(card => {
+              let cardText = card.innerText.toLowerCase();
+              if (cardText.includes(searchTerm)) {
+                  card.style.display = '';
+              } else {
+                  card.style.display = 'none';
+              }
+          });
+      }
+  
+      document.getElementById('searchBar').addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+              searchFunction();
+          }
+      });
+  </script>
+  
+
+    <div class="container">
+        <div id="technical-skills" class="card">
+            <div class="card-header">
+                <h2>Technical Skills</h2>
+            </div>
+            <button class="cta-button" onclick="toggleContent('technical-skills')">Learn More</button>
+            <div class="card-content">
+                <p>Resources and tutorials to improve your programming, software development, and other technical skills.</p>
+                <div class="feature-list">
+                    <div class="feature-item" onclick="alert('Interactive Coding Challenges coming soon!')">
+                        <h3>Interactive Coding Challenges</h3>
+                        <p>Test your skills with our daily coding challenges.</p>
+                    </div>
+                    <div class="feature-item" onclick="alert('Tech Stack Explorer coming soon!')">
+                        <h3>Tech Stack Explorer</h3>
+                        <p>Discover and learn about different technology stacks.</p>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="programmingtoutorials.html">Programming Tutorials</a></li>
+                    <li><a href="sde.html">Software Development Practices</a></li>
+                    <li><a href="project_ideas.html">Project Ideas</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="exam-preparation" class="card">
+            <div class="card-header">
+                <h2>Exam Preparation</h2>
+            </div>
+            <button class="cta-button" onclick="toggleContent('exam-preparation')">Learn More</button>
+            <div class="card-content">
+                <p>Study guides and practice tests to help you ace your exams.</p>
+                <ul>
+                    <li><a href="practicetest.html">Practice Tests</a></li>
+                    <li><a href="study_guides.html">Study Guides</a></li>
+                    <li><a href="tips_and_tricks.html">Tips and Tricks</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="body-language" class="card">
+            <div class="card-header">
+                <h2>Body Language</h2>
+            </div>
+            <button class="cta-button" onclick="toggleContent('body-language')">Learn More</button>
+            <div class="card-content">
+                <p>Learn the art of body language to enhance communication and presentation skills.</p>
+                <ul>
+                  
+                        <li><a href="bodyL.html">Body Language Basics</a></li>
+                    <li><a href="#">Advanced Techniques</a></li>
+                    <li><a href="#">Practical Exercises</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="ai-features" class="card">
+            <div class="card-header">
+                <h2>AI Features</h2>
+            </div>
+            <button class="cta-button" onclick="toggleContent('ai-features')">Learn More</button>
+            <div class="card-content">
+                <p>Explore how artificial intelligence can aid in learning and productivity.</p>
+                <ul>
+                    <li><a href="#">AI Tools for Study</a></li>
+                    <li><a href="#">AI in Education</a></li>
+                    <li><a href="#">Future Trends</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="other-areas" class="card">
+            <div class="card-header">
+                <h2>Other Study Areas</h2>
+            </div>
+            <button class="cta-button" onclick="toggleContent('other-areas')">Learn More</button>
+            <div class="card-content">
+                <p>Additional resources and tips for various other subjects and skills.</p>
+                <ul>
+                    <li><a href="learning-strategies-webpage.html">Learning Strategies</a></li>
+                    <li><a href="#">Time Management</a></li>
+                    <li><a href="#">Resource Recommendations</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="testimonials" class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-carousel">
+            <div>
+                <blockquote>
+                    "This platform has transformed the way I study. The resources are top-notch and the community is supportive."
+                    <footer>- Alex R.</footer>
+                </blockquote>
+                <blockquote>
+                    "The technical skills section helped me land my dream job. The tutorials are very detailed and easy to follow."
+                    <footer>- Jamie L.</footer>
+                </blockquote>
+            </div>
+        </div>
+        
+       
+    </div>
+
+    <div id="events" class="events">
+        <h2>Upcoming Events</h2>
+        <ul>
+            <li><strong>Tech Talk:</strong> Trends in Software Development - August 20, 2024</li>
+            <li><strong>Workshop:</strong> Advanced Body Language Techniques - September 10, 2024</li>
+            <li><strong>Webinar:</strong> AI in Education - October 15, 2024</li>
+            <li><a href="events.html">EVENTS</a></li>
+        </ul>
+    </div>
+
+    <div id="newsletter" class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <form id="newsletterForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+   <footer>
+     <p>&copy; 2024 Growth Sphere .All rights reseved.</p>
+   </footer>
+
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.querySelector(`#${sectionId} .card-content`);
+            const button = document.querySelector(`#${sectionId} .cta-button`);
+            
+            if (content.classList.contains('active')) {
+                content.style.maxHeight = '0px';
+                button.textContent = 'Learn More';
+                setTimeout(() => {
+                    content.classList.remove('active');
+                }, 300);
+            } else {
+                content.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                button.textContent = 'Hide Content';
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        function searchFunction() {
+            let searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                let cardText = card.innerText.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+/*function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  const size = Math.random() * 20 + 10; // Random size between 10px and 30px
+  bubble.style.width = bubble.style.height = `${size}px`;
+  
+  // Position the bubble at the bottom of the viewport
+  bubble.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+  bubble.style.bottom = '0'; // Start from the bottom of the viewport
+  bubble.style.backgroundColor = getRandomColor(); // Random color
+  bubble.style.animation = `bubble-animation ${Math.random() * 2 + 3}s linear forwards`; // Random duration
+
+  document.body.appendChild(bubble);
+
+  // Remove bubble after animation ends
+  bubble.addEventListener('animationend', () => {
+      bubble.remove();
+  });
+}
+
+// Create bubbles at intervals
+setInterval(createBubble, 500); // Create a new bubble every 500ms
+*/
+
+      
+        // Carousel functionality
+        let currentIndex = 0;
+        const carousel = document.querySelector('.testimonial-carousel div');
+        const totalSlides = carousel.children.length;
+
+        function moveCarousel(step) {
+            currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Form handling
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for subscribing!');
+            document.getElementById('newsletterForm').reset();
+        });
+    </script>
+</body>
+</html>

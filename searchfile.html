@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .results {
+            list-style: none;
+            padding: 0;
+        }
+        .result-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchBar" class="search-bar" placeholder="Search for items...">
+    </div>
+    <ul id="results" class="results">
+        <li class="result-item" data-category="technical-skills">JavaScript, Python, HTML, CSS</li>
+        <li class="result-item" data-category="exam-preparation">SAT, GRE, GMAT</li>
+        <li class="result-item" data-category="body-language">Non-verbal cues, Facial expressions</li>
+        <li class="result-item" data-category="ai-features">Machine Learning, Natural Language Processing</li>
+        <li class="result-item" data-category="testimonial">"Great service!", "Very helpful!"</li>
+        <li class="result-item" data-category="events">Tech Conference 2024, Workshop on AI</li>
+    </ul>
+    <script>
+        document.getElementById('searchBar').addEventListener('input', function() {
+            let query = this.value.toLowerCase();
+            let items = document.querySelectorAll('.result-item');
+            items.forEach(item => {
+                let text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

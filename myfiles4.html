@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Improvement Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+        }
+
+        nav {
+            background-color: #34495E;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            background-color: #1ABC9C;
+            color: white;
+        }
+
+        .hero {
+            background: url('https://via.placeholder.com') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            margin-bottom: 20px;
+            border-bottom: 5px solid #1ABC9C;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); 
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            flex: 1 1 calc(30% - 40px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card h2 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .card p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            margin: 10px 0;
+        }
+
+        .card ul li a {
+            text-decoration: none;
+            color: #1ABC9C;
+            transition: color 0.3s;
+        }
+
+        .card ul li a:hover {
+            text-decoration: underline;
+            color: #148f77;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Additional Styles */
+        .card-header {
+            border-bottom: 2px solid #1ABC9C;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #1ABC9C;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #1ABC9C;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            background-color: #148f77;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .search-container button {
+            background-color: #1ABC9C;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .search-container button:hover {
+            background-color: #148f77;
+        }
+
+        .testimonials, .events, .newsletter {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonials h2, .events h2, .newsletter h2 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .testimonials blockquote, .events ul, .newsletter form {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .testimonials blockquote {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-left: 4px solid #1ABC9C;
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+
+        .events ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .events ul li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .events ul li:last-child {
+            border-bottom: none;
+        }
+
+        .newsletter form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter input[type="email"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .newsletter button {
+            background-color: #1ABC9C;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .newsletter button:hover {
+            background-color: #148f77;
+        }
+
+        .testimonial-carousel {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .testimonial-carousel div {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .testimonial-carousel blockquote {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 calc(50% - 40px);
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                flex: 1 1 calc(100% - 40px);
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Improvement Hub</h1>
+        <p>Your go-to place for improving technical skills, exam preparation, and more!</p>
+    </header>
+
+    <nav>
+        <a href="#technical-skills">Technical Skills</a>
+        <a href="#exam-preparation">Exam Preparation</a>
+        <a href="#body-language">Body Language</a>
+        <a href="#ai-features">AI Features</a>
+        <a href="#other-areas">Other Study Areas</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#events">Events</a>
+        <a href="#newsletter">Newsletter</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to Your Learning Journey</h1>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Search or jump to...">
+        <button onclick="searchFunction()">Search</button>
+    </div>
+
+    <div class="container">
+        <div id="technical-skills" class="card">
+            <div class="card-header">
+                <h2>Technical Skills</h2>
+            </div>
+            <p>Resources and tutorials to improve your programming, software development, and other technical skills.</p>
+            <ul>
+                <li><a href="myfileslogin.html">Programming Tutorials
+                <li><a href="#">Software Development Practices</a></li>
+                <li><a href="#">Project Ideas</a></li>
+            </ul>
+            <a href="#" class="cta-button">Explore More</a>
+            
+        </div>
+
+        <div id="exam-preparation" class="card">
+            <div class="card-header">
+                <h2>Exam Preparation</h2>
+            </div>
+            <p>Study guides and practice tests to help you ace your exams.</p>
+            <ul>
+                <li><a href="#">Practice Tests</a></li>
+                <li><a href="#">Study Guides</a></li>
+                <li><a href="#">Tips and Tricks</a></li>
+            </ul>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+
+        <div id="body-language" class="card">
+            <div class="card-header">
+                <h2>Body Language</h2>
+            </div>
+            <p>Learn the art of body language to enhance communication and presentation skills.</p>
+            <ul>
+                <li><a href="#">Body Language Basics</a></li>
+                <li><a href="#">Advanced Techniques</a></li>
+                <li><a href="#">Practical Exercises</a></li>
+            </ul>
+            <a href="#" class="cta-button">Learn More</a>
+        </div>
+
+        <div id="ai-features" class="card">
+            <div class="card-header">
+                <h2>AI Features</h2>
+            </div>
+            <p>Explore how artificial intelligence can aid in learning and productivity.</p>
+            <ul>
+                <li><a href="#">AI Tools for Study</a></li>
+                <li><a href="#">AI in Education</a></li>
+                <li><a href="#">Future Trends</a></li>
+            </ul>
+            <a href="#" class="cta-button">Discover AI</a>
+        </div>
+
+        <div id="other-areas" class="card">
+            <div class="card-header">
+                <h2>Other Study Areas</h2>
+            </div>
+            <p>Additional resources and tips for various other subjects and skills.</p>
+            <ul>
+                <li><a href="#">Learning Strategies</a></li>
+                <li><a href="#">Time Management</a></li>
+                <li><a href="#">Resource Recommendations</a></li>
+            </ul>
+            <a href="#" class="cta-button">Explore</a>
+        </div>
+    </div>
+
+    <div id="testimonials" class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-carousel">
+            <div>
+                <blockquote>
+                    "This platform has transformed the way I study. The resources are top-notch and the community is supportive."
+                    <footer>- Alex R.</footer>
+                </blockquote>
+                <blockquote>
+                    "The technical skills section helped me land my dream job. The tutorials are very detailed and easy to follow."
+                    <footer>- Jamie L.</footer>
+                </blockquote>
+            </div>
+            <button class="carousel-button prev" onclick="moveCarousel(-1)">&#10094;</button>
+            <button class="carousel-button next" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <div id="events" class="events">
+        <h2>Upcoming Events</h2>
+        <ul>
+            <li><strong>Tech Talk:</strong> Trends in Software Development - August 20, 2024</li>
+            <li><strong>Workshop:</strong> Advanced Body Language Techniques - September 10, 2024</li>
+            <li><strong>Webinar:</strong> AI in Education - October 15, 2024</li>
+        </ul>
+    </div>
+
+    <div id="newsletter" class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <form id="newsletterForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Student Improvement Hub. All rights reserved.</p>
+    </footer>
+
+    
+    <script>
+        function searchFunction() {
+            let searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                let cardText = card.innerText.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Carousel functionality
+        let currentIndex = 0;
+
+        function moveCarousel(step) {
+            const carousel = document.querySelector('.testimonial-carousel div');
+            const totalSlides = carousel.children.length;
+            currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // Form handling
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for subscribing!');
+            document.getElementById('newsletterForm').reset();
+            
+        });
+    </script>
+</body>
+</html>
